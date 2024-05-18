@@ -1,0 +1,15 @@
+.footer {
+    background-color: rgb(51, 62, 161);
+    color: #fff;
+    padding: -3px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+#footer1{
+    padding: 0px;
+    text-align: center;
+    color: #fff;  
+    font-family: "Georgia", Times, serif;  
+}
