@@ -1,0 +1,18 @@
+body{
+    background-image: url('../img/background.jpeg');
+}
+#first{
+    color:rgb(87, 82, 82);
+    text-align: center;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 40px;
+    padding: 20px;
+}
+#sen{
+    color: rgb(87, 82, 82);
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-top: -20px;
+    margin-left: 15px;
+}
