@@ -1,55 +1,59 @@
 
 import React, { Component } from "react";
-import '../style/Vtour.css'; 
+import '../style/Vtour.css';
+import 'aframe';
+import { Entity, Scene } from 'aframe';
+import sence from '../vrtour/sence1.jpg';
+import sence2 from '../vrtour/sence2.jpg';
 
 export default class Tour extends Component {
-  state = {
-    title: "",
-    text: [],
-    loading: true,
-    error: null
-  };
-
-  componentDidMount() {
-    fetch("http://localhost:3002/pages/vtour")
+  constructor(props){
+    super(props);
+    this.state = {
+        tour: null
+    }
+}
+componentDidMount() {
+  const pageID = 7; 
+  fetch(`http://localhost:3002/pages/${pageID}`)
       .then(response => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
+          if(!response.ok){
+              throw new Error('Failed to fetch data');
+          }
+          return response.json();
       })
       .then(data => {
-        this.setState({
-          title: data.title,
-          text: data.text,
-          loading: false
-        });
+          this.setState({
+              tour: data
+          });
       })
-      .catch(error => {
-        this.setState({
-          error: error.message,
-          loading: false
-        });
-      });
-  }
+      .catch(error => console.error('Error fetching data:', error));
+}
 
   render() {
-    const { title, text, loading, error } = this.state;
+    const { tour } = this.state;
+        if (!tour) {
+            return <div>Data not found</div>;
+        }
 
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-
-    if (error) {
-      return <div>Error: {error}</div>;
-    }
-
+        const vtour = tour.Text.split('.').map((sentence, index) => (
+            <li className="tour-list-item" key={index}>{sentence.trim()}</li>
+        ));
+        const Ttitle = tour.Title;
     return (
       <div className="vtour">
-        <h1 id="title"> {title}</h1>
-        <p id="s1">{text[0]}</p>
-        <p id="s2">{text[1]}</p>
-        <image id="img"></image>
+        <h1 id="title"> {Ttitle}</h1>
+        <p id="s1">{vtour}</p>
+
+        <a-scene>
+          <a-sky id="panorama" src={sence}></a-sky>
+         <a-plane position="-10 -4 -10" rotation="0 0 0" width="2" height="1" color="#00CCFF"
+                 text="value: Change Image; color: black; align: center;"
+                 class="clickable"
+                 event-set__click="_event: click; _target: #panorama" src={sence2}>
+         </a-plane>
+         <a-text value="Click  to change the next sence" position="-7 3 -4" align="center"></a-text>
+        </a-scene>
       </div>
     );
   }

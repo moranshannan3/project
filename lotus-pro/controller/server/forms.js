@@ -39,7 +39,7 @@ input:[
     },
     {label:"the topic",
      type: "text",
-     placeholder:"Add Your Massege",
+     placeholder:"Add Your Message",
      required: "True"
     }],
     submit_button_labe2: "SUBMIT",

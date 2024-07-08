@@ -1,66 +1,76 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import '../style/AddYourQuestion.css';
 
-export default class AddYourQuestion extends Component {
+export default class AddYourQuestion extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      inputs: {},
-      form: null
+      form: null,
+      loading: true,
+      error: null
     };
   }
 
   componentDidMount() {
-    fetch('http://localhost:3002/forms/Add%20Your%20Question')
-      .then(response => response.json())
-      .then(data => {
-        const inputs = data.input.reduce((acc, inputField) => {
-          acc[inputField.placeholder.toLowerCase()] = "";
-          return acc;
-        }, {});
-        this.setState({ form: data, inputs: inputs });
+    fetch('http://localhost:3002/forms/1') 
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
       })
-      .catch(error => console.error('Error fetching form data:', error));
-  }
-
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState(prevState => ({
-      inputs: {
-        ...prevState.inputs,
-        [name]: value
-      }
-    }));
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state.inputs);
+      .then(data => {
+        this.setState({ form: data, loading: false });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false });
+      });
   }
 
   render() {
-    const { form } = this.state;
-    if (!form) {
+    const { form, loading, error } = this.state;
+
+    if (loading) {
       return <div>Loading...</div>;
     }
+
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    }
+
     return (
-      <div className="form">
-        <h2 id="fname"><strong>{form.formName}</strong></h2>
-        <p id="t1">{form.text[0]}</p>
-        <p id="t2">{form.text[1]}</p>
-        <form className="addyourquestion" onSubmit={this.handleSubmit}>
-          {form.input.map((inputField, index) => (
-            <div key={index}>
-              <label htmlFor={inputField.placeholder}>{inputField.placeholder}:</label><br />
-              <input
-                type={inputField.type}
-                name={inputField.placeholder.toLowerCase()}
-                value={this.state.inputs[inputField.placeholder.toLowerCase()]}
-                onChange={this.handleChange}
-              /><br />
+      <div className='form'>
+        <h1 id="fname"><strong>{form.formName}</strong></h1>
+        <div id="t1">
+          {form.text.split('\n').map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
+        </div>
+        <form className="addyourquestion" action="/" >
+          {form.inputs.map(input => (
+            <div key={input.inputID}>
+              <label htmlFor={input.inputID}>{input.label}</label>
+              {input.Type === 'textarea' ? (
+                <textarea
+                  id={input.inputID}
+                  name={input.label.toLowerCase()}
+                  placeholder={input.PlaceHolder}
+                  required
+                ></textarea>
+              ) : (
+                <input
+                  type={input.Type}
+                  id={input.inputID}
+                  name={input.label.toLowerCase()}
+                  placeholder={input.PlaceHolder}
+                  required
+                />
+              )}
             </div>
           ))}
-          <input type="submit" value="Submit" />
+          <div>
+          <input type="submit" value="Submit"/>
+          </div>
         </form>
       </div>
     );

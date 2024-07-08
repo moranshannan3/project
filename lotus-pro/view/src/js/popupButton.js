@@ -21,8 +21,8 @@ export default class PopupButton extends Component {
   fetchAllData = async () => {
     try {
       const response = await fetch('http://localhost:3002/allData');
-      const { buttons, pages, popUps } = await response.json();
-      this.setState({ buttons, pages, popUps });
+      const { buttons,  popUps } = await response.json();
+      this.setState({ buttons,  popUps });
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -43,12 +43,12 @@ export default class PopupButton extends Component {
   };
 
   render() {
-    const { buttons, pages } = this.state;
-    const page = pages.find(page => page.pageName === 'FAQ:Frequently Asked Questions');
+    const { buttons } = this.state;
+    const title='FAQ:Frequently Asked Questions';
 
     return (
       <div>
-        <h1 id="faq">{page ? page.pageName : 'FAQ:Frequently Asked Questions'}</h1>
+        <h1 id="faq">{title}</h1>
         <div className="buttons-container">
           {buttons.map((btn, index) => (
             index === buttons.length - 1 ? (

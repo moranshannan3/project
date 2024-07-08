@@ -4,46 +4,33 @@ import '../style/contactus.css';
 export default class ContactUs extends Component {
   constructor(props) {
     super(props);
-    
     this.state = {
-      inputs: {},
       form: null,
-      isLoading: true,
+      loading: true,
       error: null
     };
   }
 
   componentDidMount() {
-    this.fetchFormData();
-  }
-
-  fetchFormData = () => {
-    fetch('http://localhost:3002/forms/Contact%20Us')
-      .then(response => response.json())
-      .then(data => {
-        const inputs = data.input.reduce((acc, input) => {
-          acc[input.placeholder.toLowerCase()] = '';
-          return acc;
-        }, {});
-        this.setState({ form: data, inputs, isLoading: false });
+    fetch('http://localhost:3002/forms/2')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
       })
-      .catch(error => this.setState({ error, isLoading: false }));
+      .then(data => {
+        this.setState({ form: data, loading: false });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false });
+      });
   }
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState(prevState => ({
-      inputs: {
-        ...prevState.inputs,
-        [name]: value
-      }
-    }));
-  };
 
   render() {
-    const { form, inputs, isLoading, error } = this.state;
+    const { form, loading, error } = this.state;
 
-    if (isLoading) {
+    if (loading) {
       return <div>Loading...</div>;
     }
 
@@ -53,27 +40,39 @@ export default class ContactUs extends Component {
 
     return (
       <div className="form2">
-        <h2 id="name"><strong>{form.formName}</strong></h2>
+        <h1 id="name"><strong>{form.formName}</strong></h1>
         <div className="back">
-          <p id="text2">{form.text[0]}</p>
-          <p id="text3">{form.text[1]}</p>
-          <img id="icon" />
-          <div id="triangle"></div>
-          <div id="triangle1"></div>
+        <p id="ctext">{form.text}</p>
+        <img id="icon"></img>
+        <div id="trinagle"></div>
+        <div id="trinagle1"></div>
         </div>
-        <form className="contactus" action="/">
-          {form.input.map((inputField, index) => (
-            <div key={index}>
-              <label htmlFor={inputField.placeholder}>{inputField.placeholder}:</label><br />
-              <input 
-                type={inputField.type} 
-                name={inputField.placeholder.toLowerCase()} 
-                value={inputs[inputField.placeholder.toLowerCase()]} 
-                onChange={this.handleChange} 
-              /><br />
+
+        <form className="contactus"  action="/submit-form">
+          {form.inputs.map(input => (
+            <div key={input.inputID}>
+              <label htmlFor={input.inputID}>{input.label}</label>
+              {input.Type === 'textarea' ? (
+                <textarea
+                  id={input.inputID}
+                  name={input.label.toLowerCase()}
+                  placeholder={input.PlaceHolder}
+                  required
+                ></textarea>
+              ) : (
+                <input
+                  type={input.Type}
+                  id={input.inputID}
+                  name={input.label.toLowerCase()}
+                  placeholder={input.PlaceHolder}
+                  required
+                />
+              )}
             </div>
           ))}
+          <div>
           <input type="submit" value="Submit" />
+          </div>
         </form>
       </div>
     );

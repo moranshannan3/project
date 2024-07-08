@@ -2,38 +2,47 @@ import React, { Component } from "react";
 import '../style/aboutUs.css'; 
 
 export default class AboutUs extends Component {
-    state = {
-        title: "",
-        textArray: []
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            textArray: null
+        }
+    }
 
     componentDidMount() {
-        fetch('http://localhost:3002/pages/about us')
-            .then(response => response.json())
+        const pageID = 3; 
+        fetch(`http://localhost:3002/pages/${pageID}`)
+            .then(response => {
+                if(!response.ok){
+                    throw new Error('Failed to fetch data');
+                }
+                return response.json();
+            })
             .then(data => {
                 this.setState({
-                    title: data.title,
-                    textArray: data.text
+                    textArray: data
                 });
             })
             .catch(error => console.error('Error fetching data:', error));
     }
 
     render() {
-        const { title, textArray } = this.state;
-        const textElements = textArray.map((content, i) => {
-            if (i === 3 || i === 4) {
-                content = <strong>{content}</strong>;
-            }
+        const { textArray } = this.state;
+        if (!textArray) {
+            return <div>Data not found</div>;
+        }
 
-            return <p key={i} className="about-text">{content}</p>;
-        });
+        const textElements = textArray.Text.split('.').map((sentence, index) => (
+            <li className="about-list-item" key={index}>{sentence.trim()}</li>
+        ));
+        const title = textArray.Title;
 
         return (
             <div className="about">
                 <h1 id="about_title">{title}</h1>
-             <div id="about-back">   {textElements}</div>
+                <ul id="about-back">{textElements}</ul>
             </div>
         );
     }
 }
+

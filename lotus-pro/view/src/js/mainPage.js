@@ -6,32 +6,50 @@ export default class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pages: []
+            content:null
         };
     }
 
     componentDidMount() {
-        fetch('http://localhost:3002/pages/mainpage') 
-            .then(response => response.json())
-            .then(data => this.setState({ pages: data }))
+        const pageID = 2; 
+        fetch(`http://localhost:3002/pages/${pageID}`)
+            .then(response => {
+                if(!response.ok){
+                    throw new Error('Failed to fetch data');
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.setState({
+                    content: data
+                });
+            })
             .catch(error => console.error('Error fetching data:', error));
     }
 
     render() {
         const link = [];
         for (let button of menu) {
-            link.push(<li key={button.menuId}><div className="bottunDegin"><a href={button.url}>{button.mName}</a></div></li>)
+            link.push(<li key={button.mName}><div className="bottunDegin"><a href={button.url}>{button.mName}</a></div></li>)
         }
-        const { pages } = this.state;
+        const { content } = this.state;
+        if (!content) {
+            return <div>Data not found</div>;
+        }
+
+        const welcome = content.Text.split('.').map((sentence, index) => (
+            <li className="main-list-item" key={index}>{sentence.trim()}</li>
+        ));
         return (
             <div className="main">
                <div className="t_b"> 
-               <h4 id="welcome" >{pages.text && pages.text[0]}</h4>
-                <h4 id="welcome1">{pages.text && pages.text[1]}</h4>
+                   <ul className="welcome-list">
+                       {welcome}
+                   </ul>
                </div>
                 <nav>
                     <ul>
-                        {link}
+                     {link}
                     </ul>
                 </nav>
             </div>

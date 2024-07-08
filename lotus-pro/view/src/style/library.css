@@ -1,8 +1,8 @@
 body{
-    background-image: url('../img/background.jpeg');
+    background-image: url('../../public/img/background.jpeg');
 }
 #first{
-    color:rgb(87, 82, 82);
+    color:#05117C;
     text-align: center;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 40px;
@@ -15,4 +15,74 @@ body{
     text-align: left;
     margin-top: -20px;
     margin-left: 15px;
+}
+.book1{
+ margin-left: 600px;
+}
+.book1_name{
+    text-align: center;
+    color: rgb(65, 62, 62);
+    font-size: 22px;
+    margin-left: 340px;
+}
+.book1_cover{
+    background-image: url('../../public/img/books/السبيل_الى_التوحيد.png');
+    background-repeat: no-repeat;
+    height:240px;
+    width: 300px;
+    margin-top: -10px;
+    margin-left: 400px;
+}
+.book1_pdf{
+    text-decoration: none;
+    font-size: 15px;
+    margin-left: 350px;
+
+}
+.book2{
+    margin-left: 270px;
+    margin-top: -276px;
+}
+.book2_name{
+    text-align: center;
+    color: rgb(65, 62, 62);
+    font-size: 22px;
+}
+.book2_cover{
+    background-image: url('../../public/img/books/علامة_المؤمن.png');
+    background-repeat: no-repeat;
+    height:240px;
+    width: 300px;
+    margin-top: -2px;
+    margin-left: 410px;
+}
+.book2_pdf{
+    text-decoration: none;
+    font-size: 15px;
+    margin-top: -10px;
+
+}
+.book3{
+    margin-left: -390px;
+    margin-top: -276px;
+}
+.book3_name{
+    text-align: center;
+    color: rgb(65, 62, 62);
+    font-size: 22px;
+}
+.book3_cover{
+    background-image: url('../../public/img/books/دليل_الى_التوحيد.png');
+    background-repeat: no-repeat;
+    height:240px;
+    width: 300px;
+    margin-top: -1px;
+    margin-left:730px;
+
+}
+.book3_pdf{
+    text-decoration: none;
+    font-size: 15px;
+    margin-top: -10px;
+
 }

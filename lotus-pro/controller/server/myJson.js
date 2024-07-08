@@ -8,7 +8,7 @@ const menuJson =[
 {
 id:2,
 menuName:"footer",
-mainT: " |   since 2024   |   All rights reserved ©  |",
+mainT: " |   Since 2024   |   All Rights Reserved ©  |",
 }
 
  ];

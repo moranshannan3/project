@@ -16,7 +16,6 @@ const pages = [
     {pageId:3,
     pageName:"about us",
     title:"About Us",
-    icon:"./img/aboutus.png",
     text:["Have you ever found yourself in a situation where you were interested in the Druze religion but did not know where to look for information?", 
     "Here in Druze Journey we take you on a fascinating journey to learn about the foundations of Druze society. provide an easy and comprehensive access to relevant information on the culture, history, faith, heritage and so many other things.",
     "You can visit our library to enlightens your knowledge, participate in FAQ page, get updated in our latest news and main events.",

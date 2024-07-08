@@ -25,6 +25,7 @@
   width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-weight:lighter;
 }
 
 .popup-button:hover {

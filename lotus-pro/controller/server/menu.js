@@ -1,23 +1,23 @@
 //menu.js
 let menu = [
     {menuId:1,
-    mName: "About Us",
+     mName: "About Us",
     url:"/aboutUs"},
     
     {menuId:2,
-        mName: "FAQ",
+     mName: "FAQ",
     url:"/FAQ"},
 
     {menuId:3,
-        mName: "The Library",
+     mName: "The Library",
     url:"/thelibrary"},
 
     {menuId:4,
-        mName: "Virtual Tour",
+     mName: "Virtual Tour",
     url:"/vrtour"},
 
     {menuId:5,
-        mName: "Contact Us",
+     mName: "Contact Us",
     url:"/ContactUs"},
 ];
 module.exports = {menu};
