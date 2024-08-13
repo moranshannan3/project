@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import POPUP from './POPUP.js';
 import '../style/popupButton.css';
+import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 export default class PopupButton extends Component {
   constructor(props) {
@@ -44,35 +46,44 @@ export default class PopupButton extends Component {
 
   render() {
     const { buttons } = this.state;
-    const title='FAQ:Frequently Asked Questions';
+    const title = 'FAQ: Frequently Asked Questions';
 
     return (
       <div>
-        <h1 id="faq">{title}</h1>
-        <div className="buttons-container">
-          {buttons.map((btn, index) => (
-            index === buttons.length - 1 ? (
-              <a key={index} className="popup-button special-button" href={btn.url}>
-                {btn.value}
-              </a>
-            ) : (
-              <button
-                key={index}
-                className="popup-button"
-                onClick={() => this.toPopup(index)}
-              >
-                {btn.value}
-              </button>
-            )
-          ))}
+        <Header> </Header>
+        <div className='faq'>
+          <h1 id="faq">{title}</h1>
+          <div className="buttons-and-text">
+            <div className="buttons-container">
+              {buttons.map((btn, index) => (
+                index === buttons.length - 1 ? (
+                  <a key={index} className="popup-button special-button" href={btn.url}>
+                    {btn.value}
+                  </a>
+                ) : (
+                  <button
+                    key={index}
+                    className="popup-button"
+                    onClick={() => this.toPopup(index)}
+                  >
+                    {btn.value}
+                  </button>
+                )
+              ))}
+            </div>
+            <div className="rectangle">
+             <div id='rtext'> <p>Click To See The Question & Answer </p></div>
+            </div>
+          </div>
+          {this.state.showPopup && (
+            <POPUP
+              closePopup={this.closePopup}
+              title={this.state.popupData.title}
+              content={this.state.popupData.content}
+            />
+          )}
         </div>
-        {this.state.showPopup && (
-          <POPUP
-            closePopup={this.closePopup}
-            title={this.state.popupData.title}
-            content={this.state.popupData.content}
-          />
-        )}
+        <Footer> </Footer>
       </div>
     );
   }

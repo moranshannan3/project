@@ -1,12 +1,11 @@
 const express = require("express");
 const cors = require('cors');
 
+
 const { getPageById } = require('../../model/pages');
 const { getPopUpById} = require ('../../model/popUps');
 const { getFormById } = require ('../../model/forms');
 const {getBookById} = require ('../../model/library')
-
-const { menuJson } = require('./myJson');
 const { popUps } = require('./pop-ups');
 const { button } = require('./buttons')
 
@@ -90,14 +89,6 @@ app.get('/library/:id', async (req, res) => {
 
 
 
-app.get('/menuJson/:menuName', (req,res)=>{
- const menuName = req.params.menuName;
- const menu = menuJson.find(menu=>menu.menuName === menuName);
- if(!menu) {
-  return res.status(404).send('Page not found');
- }
- res.json(menu);
-});
 
 app.get('/button', (req,res)=>{
  const buttons1 = button;

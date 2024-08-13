@@ -21,7 +21,7 @@ let popUps =[
     },
 
     {popupId:3,
-     subject:"Beliefe",
+     subject:"Belief",
      title: "What do Druze people belief in?",
      content: ["The Druze faith dates back as early as the 11th century.",
      "The faith was greatly influenced by a diversity of religious sources including the Quran and Christian and Jewish Scripture, as well as elements of Greek philosophy, Eastern mysticism, and other ancient doctrines.",

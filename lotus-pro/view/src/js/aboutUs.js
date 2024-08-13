@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import '../style/aboutUs.css'; 
+import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 export default class AboutUs extends Component {
     constructor(props){
@@ -38,9 +40,13 @@ export default class AboutUs extends Component {
         const title = textArray.Title;
 
         return (
-            <div className="about">
+            <div>
+                <Header></Header>
+              <div className="about">
                 <h1 id="about_title">{title}</h1>
-                <ul id="about-back">{textElements}</ul>
+                <ul id="about-text">{textElements}</ul>
+              </div>
+             <Footer></Footer>
             </div>
         );
     }

@@ -1,75 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-body{
-    background-image: url('../../public/img/background.jpeg');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.body{
+    background-image: url('../../public/img/Druze1flags.jpg');
+
 }
 #name{
-    color:#05117C;    
+    color:#d5d0c6;
     text-align: center;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-size: 39px;
-    padding: 30px;    
+    font-family: "Encode Sans Condensed", sans-serif;
+    font-weight: 100;   
+     font-size: 40px;
+    padding: 35px;  
+    margin-top: 7%; 
 }
-.back{background-color: rgba(14, 16, 89, 0.2);
-    border-radius: 20px;
-    padding: 20px;
-    width: 400px;;
+.back{
+    background-color: rgba(236, 236, 236, 0.728);
+    border-radius: 10px;
+    padding: 33px;
+    width: 400px;
     height: 290px;
-    margin-left: 710px;
-    margin-top: -55px;
+    margin-left: 727px;
+    margin-top: -45px;
 
 }
 
 #ctext{
-    color:rgb(54, 50, 50);
+    color: #005222;
     text-align: center;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: "Encode Sans Condensed", sans-serif;
+    font-weight:500; 
     font-size: 23px;
     margin-top: 20px;
 }
 
-#icon{
-    background-image: url("../../public/img/contactus.png");
+#icon1{
+    background-image: url("../../public/img/contactus1.png");
     background-repeat: no-repeat;
-    width: 250px;
-    height: 210px;
-    margin-left: 800px;
-    margin-top: 320px;
+    width: 200px;
+    height: 200px;
+    margin-left: 40px;
+    margin-top: -5px;
 
 }
 #trinagle{
     width: 0;
     height: 0;
-    border-left: 151px solid transparent;
-    border-right: 151px solid transparent;
-    border-bottom: 100px  solid rgba(14, 16, 89, 0.2);
+    border-left: 170px solid transparent;
+    border-right: 170px solid transparent;
+    border-bottom: 100px  solid rgba(236, 236, 236, 0.728);
     transform: rotate(90deg);
-    margin-left: -319.5px;
-    margin-top: -2px;
+    margin-left: -354px;
+    margin-top: -205px;
 
 }
 #trinagle1{
     width: 0;
     height: 0;
-    border-left: 151px solid transparent;
-    border-right: 151px solid transparent;
-    border-bottom: 100px  solid rgba(14, 16, 89, 0.2);
+    border-left: 170px solid transparent;
+    border-right: 170px solid transparent;
+    border-bottom: 100px  solid rgba(236, 236, 236, 0.728);
     transform: rotate(-90deg);
-    margin-left: -221px;
-    margin-top: -98px;
+    margin-left: -252.5px;
+    margin-top: -100px;
 
 }
 .contactus{
-    background-color: rgba(14, 16, 89, 0.2);
-    border-radius: 20px;
-    padding: 20px;
+    background-color: rgba(236, 236, 236, 0.728);
+    border-radius: 10px;
+    padding: 32.5px;
     width: 400px;;
     height: 290px;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 20px;
-    margin-left: 71px;
-    margin-top: -331px;
+    margin-left: 60.9px;
+    margin-top: -356px;
     text-align: left;
-    color: rgb(63, 62, 62);
+    color: #005222;
 }
 input{
     width: 400px;
@@ -86,6 +91,7 @@ input[type="submit"] {
     width: 100px;
     padding: 10px;
     text-align: center;
+    margin-left: 150px;
     margin-top: 10px;
     border: none;
     border-radius: 20px;

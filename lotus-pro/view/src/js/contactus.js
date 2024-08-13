@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import '../style/contactus.css';
+import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 export default class ContactUs extends Component {
   constructor(props) {
@@ -27,6 +29,11 @@ export default class ContactUs extends Component {
       });
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault(); // מונע את שליחת הטופס
+    alert("Your message has been received! Thanks for getting in touch. We will be happy to help you with any question.");
+  }
+
   render() {
     const { form, loading, error } = this.state;
 
@@ -39,41 +46,45 @@ export default class ContactUs extends Component {
     }
 
     return (
-      <div className="form2">
-        <h1 id="name"><strong>{form.formName}</strong></h1>
-        <div className="back">
-        <p id="ctext">{form.text}</p>
-        <img id="icon"></img>
-        <div id="trinagle"></div>
-        <div id="trinagle1"></div>
-        </div>
-
-        <form className="contactus"  action="/submit-form">
-          {form.inputs.map(input => (
-            <div key={input.inputID}>
-              <label htmlFor={input.inputID}>{input.label}</label>
-              {input.Type === 'textarea' ? (
-                <textarea
-                  id={input.inputID}
-                  name={input.label.toLowerCase()}
-                  placeholder={input.PlaceHolder}
-                  required
-                ></textarea>
-              ) : (
-                <input
-                  type={input.Type}
-                  id={input.inputID}
-                  name={input.label.toLowerCase()}
-                  placeholder={input.PlaceHolder}
-                  required
-                />
-              )}
-            </div>
-          ))}
-          <div>
-          <input type="submit" value="Submit" />
+      <div>
+        <Header></Header>
+        <div className="form2">
+          <h1 id="name"><strong>{form.formName}</strong></h1>
+          <div className="back">
+            <p id="ctext">{form.text}</p>
+            <img id="icon1" alt="" />
+            <div id="trinagle"></div>
+            <div id="trinagle1"></div>
           </div>
-        </form>
+
+          <form className="contactus" onSubmit={this.handleSubmit} action="/">
+            {form.inputs.map(input => (
+              <div key={input.inputID}>
+                <label htmlFor={input.inputID}>{input.label}</label>
+                {input.Type === 'textarea' ? (
+                  <textarea
+                    id={input.inputID}
+                    name={input.label.toLowerCase()}
+                    placeholder={input.PlaceHolder}
+                    required
+                  ></textarea>
+                ) : (
+                  <input
+                    type={input.Type}
+                    id={input.inputID}
+                    name={input.label.toLowerCase()}
+                    placeholder={input.PlaceHolder}
+                    required
+                  />
+                )}
+              </div>
+            ))}
+            <div>
+              <input type="submit" value="Submit" />
+            </div>
+          </form>
+        </div>
+        <Footer></Footer>
       </div>
     );
   }

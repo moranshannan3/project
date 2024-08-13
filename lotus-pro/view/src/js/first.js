@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import '../style/first.css'; 
-import logo from '../logoimg/2.png';
-
+import logo1 from '../logoimg/2.png';
+import Footer from "../Footer/Footer";
 
 export default class HomePage extends Component {
     constructor(props){
@@ -38,10 +38,18 @@ export default class HomePage extends Component {
         const title = array.Title;
 
         return (
-            <div className="home">
-                <image  id="pic" src={2} />
-                <h1 id="htitle">{title}</h1>
-                <h3 id="htext">{Elements}</h3>
+            <div>
+            <div className="flag">
+              <div className="background">
+                 <h1 id="htitle">{title}</h1>
+                 <h3 id="htext">{Elements}</h3>
+                 <a href="/menu" className="logo1">
+                      <img id="fpic" src={logo1} alt="Logo" />
+                      <span className="logo-text">Menu</span>
+                 </a>
+              </div>
+            </div>
+            <Footer></Footer>
             </div>
         );
     }

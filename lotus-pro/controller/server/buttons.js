@@ -13,7 +13,7 @@ let button = [
 
     {buttonId: 3,
     action: "pops up to Q&A about the belief",
-    value: "Beliefe ",
+    value: "Belief ",
     },
     {buttonId:4,
     action: "pops up to Q&A about the holy book",
@@ -37,7 +37,7 @@ let button = [
 
     {buttonId: 8,
     action: "pops up to Q&A their residence in the mountains",
-    value: "Residence",
+    value: "Residential Areas",
     },
 
     {buttonId: 9,
@@ -47,7 +47,7 @@ let button = [
 
     {buttonId: 10,
     action: "pops up to Q&A the druze in Isreal",
-    value: "Army",
+    value: "Army Service",
     },
 
     {buttonId: 11,
